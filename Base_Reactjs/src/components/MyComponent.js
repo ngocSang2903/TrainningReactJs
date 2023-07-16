@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserInfo from "./UserInfo";
+import AddUser from "./AddUser";
 import DisplayInfo from "./DisplayInfo";
 
 class MyCoponent extends React.Component{
@@ -14,11 +14,26 @@ class MyCoponent extends React.Component{
         ]
     }
 
+    handleAddUser=(Object)=>{
+
+        // let listUserNew=this.state.listUsers;
+        // listUserNew.unshift(Object);
+        // this.setState({
+        //     listUsers:listUserNew
+        // })
+        
+        this.setState({
+            listUsers:[Object, ...this.state.listUsers]
+        })
+        console.log(Object)
+        console.log(this.state.listUsers)
+    }
+
     render(){
         return(
             <div>
-            <UserInfo></UserInfo><br></br>
-            <DisplayInfo listUsers={this.state.listUsers} ></DisplayInfo>
+            <AddUser handleAddUser={this.handleAddUser} ></AddUser><br></br>
+            <DisplayInfo listUsers={this.state.listUsers}  ></DisplayInfo>
             </div>
             
         );
