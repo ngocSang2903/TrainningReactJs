@@ -11,3 +11,74 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app-container{
+  .header-container{
+
+
+    .btn-login{
+      border-radius: 5px;
+      border: 1px solid rgb(116, 115, 115);
+      padding: 0 15px;
+      margin-right: 15px;
+      height: 40px;
+    }
+
+    .btn-signUp{
+      border-radius: 5px;
+      padding: 0 15px;
+      margin-right: 15px;
+      background-color: rgb(76, 75, 75) ;
+      color: white;
+      height: 40px;
+      &:hover{
+        background-color: black;
+      }
+    }
+    .navbar{
+      z-index: 10;
+      padding-top: 20px;
+      background-color: rgba(0,0,0, 0) !important;
+      .nav-link{
+        &.active{
+          color: rgb(118, 205, 239);
+        }
+      }
+    }
+  }
+  .homepage-container{
+    .homepage-content{
+      padding: 100px;
+      position: relative;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      .tittle-one{
+        font-size: 45px;
+        position: relative;
+        font-weight: 600;
+      }
+      .tittle-two{
+        font-size: 25px;
+      }
+      .tittle-three{
+        button{
+          border-radius: 5px;
+          background-color: rgb(76, 75, 75) ;
+          color: white;
+          height: 40px;
+          &:hover{
+            background-color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+video{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+

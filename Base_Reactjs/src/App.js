@@ -3,7 +3,6 @@ import React from 'react';
 import Header from './components/Header/Header';
 import { Outlet,Link } from "react-router-dom";
 
-
 class App extends React.Component{
   render(){
     return(
@@ -17,8 +16,6 @@ class App extends React.Component{
             <Outlet></Outlet>
           </div>
         </div>
-        
-        
     </div>
     )
   }

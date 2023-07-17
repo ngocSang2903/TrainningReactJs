@@ -2,29 +2,31 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const Header=()=> {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Trainning</Navbar.Brand>
+        <NavLink to='/' className='navbar-brand'>Trainning</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to='/' className='nav-link'>Home</Link>
-            <Link to='/users' className='nav-link'>User</Link>
-            <Link to='/admins' className='nav-link'>Admin</Link>
+            <NavLink to='/' className='nav-link'>Home</NavLink>
+            <NavLink to='/users' className='nav-link'>User</NavLink>
+            <NavLink to='/admins' className='nav-link'>Admin</NavLink>
           </Nav>
           <Nav>
-            <NavDropdown title="Setting" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+            <button className='btn-login'>Login</button>
+            <button className='btn-signUp'>SignUP</button>
+            {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
+                <NavDropdown.Item>Login</NavDropdown.Item>
+                <NavDropdown.Item>
                    Logout
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Profile</NavDropdown.Item>
-                </NavDropdown>
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+                </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
