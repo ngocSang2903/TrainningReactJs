@@ -1,14 +1,21 @@
+import axios from 'axios';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {FcPlus} from 'react-icons/fc'
+import {FcPlus} from 'react-icons/fc';
 
+const ModalCreateUser=(props)=> {
+  const {show, setShow} = props;
 
-
-const ModalCreateUser=()=> {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    setEmail("");
+    setPassword("");
+    setImages("");
+    setRole("USER");
+    setUsername("")
+    setPreviewImages("")
+  };
   const handleShow = () => setShow(true);
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -27,23 +34,41 @@ const ModalCreateUser=()=> {
 
   }
 
+  const handleSubmitUser= async()=>{
+    //validate
 
+
+    //call api
+    // let data={
+    //   email: email,
+    //   password: password,
+    //   username: username,
+    //   role: role,
+    //   userImage: images
+    // }
+
+    const data=new FormData();
+    data.append('email',email);
+    data.append('password',password);
+    data.append('username',username);
+    data.append('role',role);
+    data.append('userImage',images);
+
+     let res=await axios.post('http://localhost:8081/api/v1/participant',data)
+    console.log(res)
+  }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add New User
-      </Button>
-
       <Modal show={show} onHide={handleClose} size='xl' backdrop="static" className='modal-add-user'>
         <Modal.Header closeButton>
           <Modal.Title>Add New User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form className="row g-3">
-             <div className="col-md-6">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control" value={email} onChange={(event)=>setEmail(event.target.value)}/>
+        <data className="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" value={email} onChange={(event)=>setEmail(event.target.value)}/>
             </div>
             <div className="col-md-6">
                 <label className="form-label">Password</label>
@@ -61,7 +86,7 @@ const ModalCreateUser=()=> {
                 </select>
             </div>
             <div className='col-md-12'>
-                <label className="form-label label-upload" htmlFor='lableforupload'><FcPlus></FcPlus>UpLoad images</label>
+                <label className="data-label label-upload" htmlFor='lableforupload'><FcPlus></FcPlus>UpLoad images</label>
                 <input type='file'  id="lableforupload" hidden onChange={(event)=>handleUpLoadImgaes(event)}></input>
             </div>
             <div className='col-md-12 img-preview'>
@@ -70,16 +95,14 @@ const ModalCreateUser=()=> {
                 :
                 <span>Preview Images</span>
                 }
-                
-
             </div>
-        </form>
+        </data>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={()=>handleSubmitUser()}>
             Save
           </Button>
         </Modal.Footer>

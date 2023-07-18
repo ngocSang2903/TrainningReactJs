@@ -3,7 +3,6 @@ import './Admin.scss'
 import {FaBars} from 'react-icons/fa'
 import { useState } from "react"
 import { Outlet,Link } from "react-router-dom";
-import {FcPlus} from 'react-icons'
 
 const Admin=()=>{
     const [collapsed,setCollapsed]=useState(false);
